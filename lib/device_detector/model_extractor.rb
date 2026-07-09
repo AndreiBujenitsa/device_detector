@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 class DeviceDetector
   class ModelExtractor < MetadataExtractor
+
     def call
-      s = super.to_s.gsub('_', ' ').strip
+      s = super.to_s.gsub('_',' ').strip
       s = s.gsub(/ TD$/i, '')
 
       return nil if s == 'Build'
@@ -20,5 +19,6 @@ class DeviceDetector
     def regex
       @regex ||= regex_meta[:regex_model] || regex_meta[:regex]
     end
+
   end
 end
